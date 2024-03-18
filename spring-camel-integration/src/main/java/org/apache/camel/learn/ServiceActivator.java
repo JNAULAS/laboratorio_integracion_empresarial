@@ -25,6 +25,11 @@ public class ServiceActivator {
                                                                      // del metodo atraves del @PathVariable
         return producerTemplate.requestBody("direct:saludo", parametro).toString();
     }
+    @PostMapping(value = "/createclientpend")
+    public String createClient() {// 2. Recibimos la variable a traves
+                                                                     // del metodo atraves del @PathVariable
+        return producerTemplate.requestBody("direct:saveClient1", "").toString();
+    }
 
     @SuppressWarnings("null")
     @PostMapping(ComunRoutes.POST_SAVE_CLIENT)

@@ -39,3 +39,21 @@ Proyecto contenedor de integracion empresarial.
         http://127.0.0.1:5000
 4. Procemos a definir los servicios.
     - Definimos los metodos del servicio, para esto creamos un arreglo dentro de la clase de python
+
+
+### PROCEDEMOS A CREAR EL PROYECTO EN .NET
+1. Para la creacion del proyecto nos hubicamos en el folder principal contenedor de todos los proyectos y ejecutamso el comando.
+    - procedemos a instalar netcore 7
+        https://learn.microsoft.com/es-es/dotnet/core/install/
+    - Lanzamos comando para la creacion del proyecto
+    dotnet new webapi -o netmicro --no-https --framework net7.0
+2. Pasos para compilar y testear la aplicacion
+    - dotnet clean
+    - dotnet build
+    - dotnet run
+3. Creamos un objeto para manejar los Clientes
+4. Definimos los servicios dentro de la carpeta controller
+5. Procedemos a compilar el proyecto
+    - dotnet clean
+    - dotnet build
+    - dotnet run

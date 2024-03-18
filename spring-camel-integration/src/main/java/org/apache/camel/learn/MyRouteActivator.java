@@ -7,23 +7,26 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyRouteActivator extends RouteBuilder {
 
+
     @Override
     public void configure() throws Exception {
         // Route Test
         from("direct:saludo")
-        .transform()
-        .method("ClientBean","updateString")
-        .log("log:SALIDA")// print console log
-        .to("stream:out");// send output service 
+                .transform()
+                .method("ClientBean", "updateString")
+                .log("log:SALIDA")// print console log
+                .to("stream:out");// send output service
 
         // Route save client
         from("direct:saveClient")
-        .routeId("addClient")
-        .transform()
-        .method("ClientBean", "saveClient")
-        .log("log:Registro de cliente ok.")// print console log
-        .to("stream:out");// send output service 
-        
+                .routeId("addClient")
+                .transform()
+                .method("ClientBean", "saveClient")
+                .log("log:Registro de cliente ok.")// print console log
+                .to("stream:out");// send output service
+
+
+
     }
-    
+
 }
