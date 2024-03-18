@@ -29,9 +29,9 @@ public class ClientController : ControllerBase
     }
     // Add Client
     [HttpPost(Name = "AddClients")]
-    public String Post(Client client)
+    public String Post(Client clientA)
     {
-        listClients.Add(client);
+        listClients.Add(clientA);
         return "Cliente Registrado con exito.";
     }
 

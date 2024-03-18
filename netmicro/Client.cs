@@ -7,10 +7,10 @@ public class Client
         this.telefono = telefono;
         this.direccion = direccion;
     }
-    private String identificacion {get; set;}
-    private String nombres {get; set;}
-    private String correo {get; set;}
-    private String telefono  {get; set;}
-    private String direccion {get; set;}
+    public String identificacion {get; set;}
+    public String nombres {get; set;}
+    public String correo {get; set;}
+    public String telefono  {get; set;}
+    public String direccion {get; set;}
 }
 
