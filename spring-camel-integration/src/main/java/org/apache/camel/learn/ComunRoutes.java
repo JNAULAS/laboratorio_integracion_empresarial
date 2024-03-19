@@ -6,4 +6,5 @@ public class ComunRoutes {
 	 * Router for Save Product
 	 */
 	public static final String POST_SAVE_CLIENT = BASE_PATH + "/addClient";
+	public static final String POST_SAVE_CLIENT_EMPR = BASE_PATH + "/addClientEmp";
 }

@@ -19,7 +19,7 @@ public class MyRouteActivator extends RouteBuilder {
 
         // Route save client
         from("direct:saveClient")
-                .routeId("addClient")
+                .routeId("saveClient")
                 .transform()
                 .method("ClientBean", "saveClient")
                 .log("log:Registro de cliente ok.")// print console log

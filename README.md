@@ -57,3 +57,50 @@ Proyecto contenedor de integracion empresarial.
     - dotnet clean
     - dotnet build
     - dotnet run
+
+#### PASOS PARA EJECUCION DE PROYECTO 
+## PYTHON
+1. Levantamos el ambiente virtual 
+    source pryservice123/bin/activate
+2. Ingresamos dentro de la capera contenedora del proyecto - pryservice123
+3. Procedemos a levantar la aplicacion
+    python main.py 
+4. Realizamos la validacion de consumo de servicios desde el postman
+    http://127.0.0.1:5000/clients (methodo GET)
+## .NET CORE
+1. Ejecutamos los comandos para limpiar, compilar y lanzar la aplicacion.
+    - dotnet clean
+    - dotnet build
+    - dotnet run
+2. Una vez levantado la aplicacion procedemos a consumir el servicio de consulta desde el postman
+    2.1 Ingresamos al swagger para copiar los endpoint 
+        http://localhost:5278/swagger/index.html
+    2.3 Probamos la consulta del servicio de clientes
+        http://localhost:5278/Client
+## EJECUTAMOS LA APLICACION PRINCIPAL CAMEL SPRINT BOOT PARA QUE ELLA RECIBA EL REGITRO DE LOS CLIENTES Y SE VISUALICE EN LAS DEMAS EMPRESAS
+1. Ingresamos al proyecto - spring-camel-integration
+2. Una vez dentro lanzamos los comando para compilar y deployar el servicio
+    /Users/juannaula/Documents/CLASES_MAESTRIA/PATRONES_INTEGRACION_EMPRESARIAL/apache-maven-3.9.6/bin/mvn clean package -DskipTests (Mac)
+    mvn clean package -DskipTests (Windows)
+
+    java -jar target/spring-camel-integration-1.0.0-SNAPSHOT.jar
+
+3. Ingresmos al postman para e consumo del servicio de consulta y creacion de nuevos clientes.
+    http://localhost:8080/addClienteEmp (POST)
+    
+    Enviamos el json para crear el cliente
+        {
+            "codigo": 12,
+            "identificacion": "0104567788",
+            "nombres": "Irma Murillo",
+            "correo": "pruebas@yahoo.es",
+            "telefono": "0986543782",
+            "direccion": "Ricaurte"
+            
+        }
+4. Ejecutamso en conbsumo desde el postam y si todo fue ok retorna el mensaje 
+    Cliente Registrado con exito.
+5. Procedemos a probar desde los aplicativos de python y .netCore y ya se visualiza el registro de los clientes en listas virtuales.
+    http://127.0.0.1:5000/clients (methodo GET)
+    http://localhost:5278/Client
+

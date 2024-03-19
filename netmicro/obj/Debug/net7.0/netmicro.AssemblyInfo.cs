@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("netmicro")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+56c5eab427257923ffa4c72cc6b71f1a80a7de20")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4938b5d7202b5adc468e5c4233c7b314e3081800")]
 [assembly: System.Reflection.AssemblyProductAttribute("netmicro")]
 [assembly: System.Reflection.AssemblyTitleAttribute("netmicro")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
