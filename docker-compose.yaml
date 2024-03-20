@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  service123:
+    build:
+      context: ./pryservice123
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    container_name: container_app_python_service123
+    networks:
+      - mynetwork
+
+  netmicro:
+    build:
+      context: ./netmicro
+      dockerfile: Dockerfile
+    ports:
+      - "5278:5278"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    container_name: container_app_netmicro
+    networks:
+      - mynetwork
+
+  spring-camel:
+    build:
+      context: ./spring-camel-integration
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    container_name: container_app_spring_camel
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:

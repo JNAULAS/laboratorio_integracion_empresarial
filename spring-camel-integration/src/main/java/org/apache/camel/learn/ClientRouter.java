@@ -12,7 +12,7 @@ public class ClientRouter extends RouteBuilder {
     @Override
     public void configure() throws Exception {
         // Route save client
-        from("direct:addClient")
+        /*from("direct:addClient")
                 .routeId("addClient")
                 .process(new CreateClientProcesor())
                 .marshal(jsonDataFormat)
@@ -20,6 +20,17 @@ public class ClientRouter extends RouteBuilder {
                     .parallelProcessing() // Procesamiento paralelo
                     .to("rest:post:/clients?host=localhost:5000")
                     .to("rest:post:/Client?host=localhost:5278")
+                .end() // Fin del multicast
+                .to("log:CREATE Client"); // Envía la salida al servicio de registro
+                 */
+                from("direct:addClient")
+                .routeId("addClient")
+                .process(new CreateClientProcesor())
+                .marshal(jsonDataFormat)
+                .multicast() // Invoca ambos servicios REST al mismo tiempo
+                    .parallelProcessing() // Procesamiento paralelo
+                    .to("rest:post:/clients?host=netmicro:5278") // Cambia localhost por netmicro
+                    .to("rest:post:/Client?host=service123:5000") // Cambia localhost por service123
                 .end() // Fin del multicast
                 .to("log:CREATE Client"); // Envía la salida al servicio de registro
     }

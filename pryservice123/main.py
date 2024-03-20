@@ -52,4 +52,4 @@ def returnClients():
 # Definimos el main como una buena practica
 if __name__ == '__main__':
     # Ejecutamos la aplicacion y podemos activar el debug
-    app.run(debug=True)
+    app.run(host="0.0.0.0")
