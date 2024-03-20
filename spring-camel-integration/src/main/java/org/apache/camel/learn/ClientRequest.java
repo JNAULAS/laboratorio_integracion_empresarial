@@ -7,6 +7,7 @@ public class ClientRequest {
     private String correo;
     private String telefono;
     private String direccion;
+    private int codigoEmpresa;
     public int getCodigo() {
         return codigo;
     }
@@ -43,7 +44,12 @@ public class ClientRequest {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-
+    public int getCodigoEmpresa() {
+        return codigoEmpresa;
+    }
+    public void setCodigoEmpresa(int codigoEmpresa) {
+        this.codigoEmpresa = codigoEmpresa;
+    }
 
 
 }

@@ -14,4 +14,5 @@ RUN dotnet publish -c Release -o out
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS runtime
 WORKDIR /netmicro
 COPY --from=build /netmicro/out .
+EXPOSE 80
 ENTRYPOINT ["dotnet", "netmicro.dll"]

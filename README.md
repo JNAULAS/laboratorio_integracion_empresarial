@@ -102,5 +102,7 @@ Proyecto contenedor de integracion empresarial.
     Cliente Registrado con exito.
 5. Procedemos a probar desde los aplicativos de python y .netCore y ya se visualiza el registro de los clientes en listas virtuales.
     http://127.0.0.1:5000/clients (methodo GET)
-    http://localhost:5278/Client
+    http://localhost:5278/Client (method GET)
+    http://localhost:8080/addClientEmp
+    http://localhost:8080/saludo/juan
 
