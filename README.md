@@ -58,17 +58,22 @@ Proyecto contenedor de integracion empresarial.
     - dotnet build
     - dotnet run
 
-#### PASOS PARA EJECUCION DE PROYECTO 
-## PYTHON
-1. Levantamos el ambiente virtual 
+
+
+
+
+###### PASOS PARA EJECUCION DE PROYECTO DE LABORATORIO  #####################################################
+### PYTHON
+1. Levantamos el ambiente virtual, para esto lanzamos el comando ubicados dentro del folder principal laboratorio_integracion_empresarial
     source pryservice123/bin/activate
 2. Ingresamos dentro de la capera contenedora del proyecto - pryservice123
 3. Procedemos a levantar la aplicacion
     python main.py 
-4. Realizamos la validacion de consumo de servicios desde el postman
+4. Realizamos la validacion de consumo de servicios desde el postman, en este caso retornara toda la data este solo es usando el componen - tetransform (primera validacion)
     http://127.0.0.1:5000/clients (methodo GET)
-## .NET CORE
-1. Ejecutamos los comandos para limpiar, compilar y lanzar la aplicacion.
+### .NET CORE
+1. Una vez dentro del folder del proyecto principal laboratorio_integracion_empresarial ingresamos al proyecto netmicro.
+1. Una vez dentro del proyecto netmicro ejecutamos los comandos para limpiar, compilar y lanzar la aplicacion.
     - dotnet clean
     - dotnet build
     - dotnet run
@@ -77,32 +82,33 @@ Proyecto contenedor de integracion empresarial.
         http://localhost:5278/swagger/index.html
     2.3 Probamos la consulta del servicio de clientes
         http://localhost:5278/Client
-## EJECUTAMOS LA APLICACION PRINCIPAL CAMEL SPRINT BOOT PARA QUE ELLA RECIBA EL REGITRO DE LOS CLIENTES Y SE VISUALICE EN LAS DEMAS EMPRESAS
+
+### EJECUTAMOS LA APLICACION PRINCIPAL CAMEL SPRINT BOOT PARA QUE ELLA RECIBA EL JSON DE INFORMACION PARA CREACION DE LOS CLIENTES EL CUAL INCLUYE LA CONDICION PARA VERIFICAR SI VA A LA EMPRESA 123 (PYTHON ) O ABC (NETCORE)
 1. Ingresamos al proyecto - spring-camel-integration
 2. Una vez dentro lanzamos los comando para compilar y deployar el servicio
+    - COompilacion del proyecto
     /Users/juannaula/Documents/CLASES_MAESTRIA/PATRONES_INTEGRACION_EMPRESARIAL/apache-maven-3.9.6/bin/mvn clean package -DskipTests (Mac)
     mvn clean package -DskipTests (Windows)
-
+    - Ejecucion ser servicio.
     java -jar target/spring-camel-integration-1.0.0-SNAPSHOT.jar
 
-3. Ingresmos al postman para e consumo del servicio de consulta y creacion de nuevos clientes.
+3. Ingresamos al postman para el consumo del servicio de consulta y creacion de nuevos clientes.
     http://localhost:8080/addClienteEmp (POST)
     
     Enviamos el json para crear el cliente
         {
-            "codigo": 12,
-            "identificacion": "0104567788",
-            "nombres": "Irma Murillo",
+            "codigo": 4,
+            "identificacion": "0104925594",
+            "nombres": "Karolain Naula",
             "correo": "pruebas@yahoo.es",
             "telefono": "0986543782",
-            "direccion": "Ricaurte"
+            "direccion": "Ricaurte",
+            "codigoEmpresa":2 // Importantes: Bandera que decide el camino a tomar
             
         }
-4. Ejecutamso en conbsumo desde el postam y si todo fue ok retorna el mensaje 
-    Cliente Registrado con exito.
-5. Procedemos a probar desde los aplicativos de python y .netCore y ya se visualiza el registro de los clientes en listas virtuales.
-    http://127.0.0.1:5000/clients (methodo GET)
-    http://localhost:5278/Client (method GET)
-    http://localhost:8080/addClientEmp
-    http://localhost:8080/saludo/juan
+
+    3.1  Si el codigo de la codigoEmpresa va en (1) el registro se realizara en la empresa 123 (PYTHON), aqui el resultado retorna la nueva lista de clientes y esto a su vez lo podemos probar con el postman endopint de consulta (http://127.0.0.1:5000/clients) (method GET) para validar el registro del nuevo cliente en el servicio python.
+
+    3.2 Si el codigoEmpresa va en (2) el ClientRouter valida y enviara por el canal netmicro empresa ABC para registro del cliente por medio del endpoint provisto por la empresa ABC, aqui el resultado ya no sera un listado de empresas si no solo un mensaje de confirmacion que envia netmicro (Cliente Registrado con exito.), ahora qui para probar el registro en la empresa ABC (netmicro) hacemos uso del endpoint http://localhost:5278/Client (method GET) y aqui ya podremos ver el listado con el nuevo cliente creado.
+
 
